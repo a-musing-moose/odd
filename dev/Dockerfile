@@ -6,10 +6,15 @@ RUN sudo apt-get update \
 
 ARG PYVERSION=3.7.3
 
-RUN curl https://pyenv.run | bash \
-    && echo "export PATH=\"/home/coder/.pyenv/bin:\$PATH\"" >> ~/.bashrc \
-    && echo "eval \"\$(pyenv init -)\"" >> ~/.bashrc \
-    && echo "eval \"\$(pyenv virtualenv-init -)\"" >> ~/.bashrc \
-    && /home/coder/.pyenv/bin/pyenv install $PYVERSION \
-    && /home/coder/.pyenv/bin/pyenv global $PYVERSION
-    
+RUN cd $HOME && git clone git://github.com/yyuu/pyenv.git .pyenv
+
+ENV PYENV_ROOT /home/coder/.pyenv
+ENV PATH $PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH
+RUN pyenv install $PYVERSION \
+    && pyenv global $PYVERSION \
+    && pyenv rehash
+
+# Generic Python stuff above, project specific below
+
+RUN sudo DEBIAN_FRONTEND=noninteractive apt-get install -yq libpq-dev
+RUN pip install isort invoke black

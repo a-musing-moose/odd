@@ -7,5 +7,10 @@
     "python.unitTest.unittestEnabled": false,
     "python.unitTest.nosetestsEnabled": false,
     "python.unitTest.pyTestEnabled": true,
-    "python.formatting.provider": "black"
+    "python.formatting.provider": "black",
+    "python.terminal.activateEnvironment": false,
+    "files.exclude": {
+        "**/__pycache__": true,
+        "**/.pytest_cache": true
+    }
 }
