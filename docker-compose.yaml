@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  dev:
+    build:
+      context: ./dev
+      dockerfile: Dockerfile
+      args:
+        - "PYVERSION=3.7.3"
+    command: "--allow-http --no-auth"
+    volumes:
+      - .:/home/coder/project:cached
+    ports:
+      - "8443:8443"
+      - "8000:8000"
+  db:
+    image: postgres:10
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=dev
+      - POSTGRES_PASSWORD=dev_password

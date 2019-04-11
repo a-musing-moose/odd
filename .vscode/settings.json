@@ -1,0 +1,11 @@
+{
+    "editor.fontFamily": "'Roboto Mono'",
+    "terminal.integrated.fontFamily": "'Roboto Mono'",
+    "python.pythonPath": "/home/coder/.pyenv/versions/3.7.3/bin/python",
+    "python.linting.enabled": false,
+    "python.unitTest.pyTestArgs": [],
+    "python.unitTest.unittestEnabled": false,
+    "python.unitTest.nosetestsEnabled": false,
+    "python.unitTest.pyTestEnabled": true,
+    "python.formatting.provider": "black"
+}
